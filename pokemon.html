@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex API</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid pokemon-bg">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-header bg-danger text-white text-center py-3">
+                            <h1 class="mb-0">🎮 Pokédex API</h1>
+                            <p class="mb-0">Descubre información de tus Pokémon favoritos</p>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Buscador -->
+                            <div class="search-section mb-4">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" 
+                                           id="pokemonInput" 
+                                           class="form-control rounded-start-pill" 
+                                           placeholder="Escribe el nombre o número del Pokémon..."
+                                           maxlength="50">
+                                    <button class="btn btn-primary rounded-end-pill px-4" 
+                                            id="searchBtn" 
+                                            type="button">
+                                        🔍 Buscar
+                                    </button>
+                                </div>
+                                <small class="text-muted">Ejemplos: pikachu, charizard, 25, 150</small>
+                            </div>
+
+                            <!-- Loading -->
+                            <div id="loading" class="text-center d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Buscando Pokémon...</p>
+                            </div>
+
+                            <!-- Error -->
+                            <div id="error" class="alert alert-danger d-none" role="alert">
+                                <h5>❌ ¡Oops! Pokémon no encontrado</h5>
+                                <p class="mb-0">Verifica que el nombre esté bien escrito o intenta con otro Pokémon.</p>
+                            </div>
+
+                            <!-- Resultado -->
+                            <div id="pokemonResult" class="pokemon-card d-none">
+                                <div class="row g-4">
+                                    <!-- Imagen y datos básicos -->
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="pokemon-image-container">
+                                                <img id="pokemonImage" 
+                                                     src="" 
+                                                     alt="Pokémon" 
+                                                     class="pokemon-image img-fluid">
+                                            </div>
+                                            <h2 id="pokemonName" class="pokemon-name mt-3"></h2>
+                                            <span id="pokemonId" class="badge bg-secondary fs-6"></span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Información detallada -->
+                                    <div class="col-md-6">
+                                        <div class="pokemon-info">
+                                            <div class="info-section mb-3">
+                                                <h5 class="text-primary mb-2">📏 Características Físicas</h5>
+                                                <div class="row g-2">
+                                                    <div class="col-6">
+                                                        <div class="stat-card p-2 rounded bg-light">
+                                                            <small class="text-muted">Altura</small>
+                                                            <div id="pokemonHeight" class="fw-bold"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="stat-card p-2 rounded bg-light">
+                                                            <small class="text-muted">Peso</small>
+                                                            <div id="pokemonWeight" class="fw-bold"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="info-section mb-3">
+                                                <h5 class="text-primary mb-2">🏷️ Tipos</h5>
+                                                <div id="pokemonTypes" class="d-flex flex-wrap gap-2"></div>
+                                            </div>
+
+                                            <div class="info-section mb-3">
+                                                <h5 class="text-primary mb-2">⚡ Habilidades</h5>
+                                                <div id="pokemonAbilities" class="d-flex flex-wrap gap-2"></div>
+                                            </div>
+
+                                            <div class="info-section">
+                                                <h5 class="text-primary mb-2">📊 Estadísticas Base</h5>
+                                                <div id="pokemonStats"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
